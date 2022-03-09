@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>商品页</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/vendor/vendor.min.css" th:href="@{/css/vendor/vendor.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/plugins/plugins.min.css" th:href="@{/css/plugins/plugins.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.min.css" th:href="@{/css/style.min.css}"/>
+    <script th:inline="javascript">
+        function buy (){
+           return  confirm("确定购买"+[[${name1}]]+"？");
+        }
+    </script>
+    <style th:inline="text">
+        .breadcrumb-area{
+            background: url("[[@{/}]]img/1-1-1919x388.jpg");
+            background-color: #ffffff;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="header-main sticky-nav ">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-auto align-self-center">
+                <div class="header-logo">
+                    <a href="../index.html" th:href="@{/}">
+                        <i class="fa fa-bookmark-o"></i>
+                        家政服务
+                    </a>
+                </div>
+            </div>
+
+            <div class="col col-lg-r align-self-r pl-0">
+                <div class="header-actions">
+                    <a href="../login/login.html"  th:if="${session.user}==null" th:href="@{/login}" class="header-action-btn login-btn" data-bs-toggle="modal" data-bs-target="#loginActive">
+                        登录/注册
+                    </a>
+                    <a href="../user/user.html"  th:if="${session.user}!=null"  th:href="@{/user}" class="header-action-btn login-btn" data-bs-toggle="modal" data-bs-target="#loginActive">
+                        个人中心
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title" th:text="${name1}"></h2>
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" th:href="@{/}">
+                            <button type="button">返回首页</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="product-details-area pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px"><!-- Swiper -->
+                <div class="swiper-container zoom-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/1.jpg"
+                                 alt="" th:src="@{img/1.jpg}">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/2.jpg"
+                                 alt="" th:src="@{/img/2.jpg}">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/3.jpg"
+                                 alt="" th:src="@{/img/3.jpg}">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/4.jpg"
+                                 alt="" th:src="@{/img/4.jpg}">
+                        </div>
+                    </div>
+                </div>
+<!--                缩略图-->
+                <div class="swiper-container zoom-thumbs mt-3 mb-3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/1.jpg" alt="" th:src="@{/img/1.jpg}">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/2.jpg" alt="" th:src="@{/img/2.jpg}">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/3.jpg" alt="" th:src="@{/img/3.jpg}">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto"
+                                 src="../../static/img/4.jpg" alt="" th:src="@{/img/4.jpg}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--            介绍-->
+            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-details-content quickview-content">
+                    <h2>男性家政</h2>
+                    <div class="pricing-meta">
+                        <ul>
+                            <li class="old-price not-cut" th:text="${price1}+'￥/月'" >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pro-details-rating-wrap">
+                        <div class="rating-product">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            五星好评
+                        </div>
+                    </div>
+
+                    <p class="mt-30px mb-0">专业管家、保姆、搬运工、宴会服务人员、礼宾人员。
+                    <p class="mt-30px mb-0">可提供清洁、搬家、管理等特色服务。给您24小时无微不至的关怀。 </p>
+
+                    <div class="pro-details-quality">
+                        <div class="pro-details-cart">
+                            <a href="../order/order.html" th:href="@{/order}">
+                            <button   type="submit" class="add-cart m-0" onclick="return buy()">购买</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../../static/js/plugins/plugins.min.js" th:src="@{/js/plugins/plugins.min.js}"></script>
+<script src="../../static/js/jquery-ui.min.js" th:src="@{/js/jquery-ui.min.js}"></script>
+<script src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>

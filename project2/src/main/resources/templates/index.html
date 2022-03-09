@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>家政</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap的引用 -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" />
+
+    <!-- font-awesome的引用-->
+    <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome/css/font-awesome.css" th:href="@{/fonts/font-awesome/css/font-awesome.css}" />
+
+    <!-- style.css引用-->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <!-- 谷歌字体-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <style>
+        body{
+           min-width: 1000px;
+        }
+    </style>
+<script>
+  function check(){
+
+  }
+</script>
+</head>
+
+
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" >
+<!--  顶部标签-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!--左边图标-->
+            <a class="navbar-brand " href="#page-top"><i class="fa fa-bookmark-o"></i> 家政服务</a>
+        </div>
+        <!-- 右边跳转标签-->
+        <div class="collapse navbar-collapse"  >
+            <ul class="nav navbar-nav navbar-right" >
+                <li><a href="index.html" th:href="@{/}">首页</a></li>
+                <li><a href="product/product1.html" th:href="@{/product1}">男家政</a></li>
+                <li><a href="product/product2.html" th:href="@{/product2}" >女家政</a></li>
+                <li th:if="${session.user}==null"><a href="login/login.html" th:href="@{/login}" >登录注册</a></li>
+                <li th:if="${session.user}!=null"><a href="user/user.html" th:href="@{/user}" >个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<!--头显示区域-->
+<header id="header">
+    <div class="intro">
+                    <div class="intro-text">
+                        <h1>家政服务</h1>
+                        <p>欢迎来到家政服务</p>
+                    </div>
+                </div>
+</header>
+
+
+<!-- 关于我们 -->
+<div id="about">
+    <div class="container">
+        <div class="section-title text-center ">
+            <h2>关于我们</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <img src="../static/img/about.jpg" class="img-responsive thumbnail" alt="图片错误" th:src="@{/img/about.jpg}" />
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="about-text">
+                    <h3>707家政服务</h3>
+                    <p>一家专业的家政服务机构,专业家政公司,让您无后顾之忧!
+                    </p>
+                    <p>广州保洁家政服务来这里,3小时匹配好阿姨!多种保姆月嫂服务,按需匹配,不合适随时换人,不满意免费退款。各种服务一应俱全。</p>
+                    <div class="list-style">
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <ul>
+                                <li>无额外费用</li>
+                                <li>不满意包退</li>
+                                <li>保证人员持证上岗</li>
+                                <li>接受年龄要求</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <ul>
+                                <li>保证安全私密</li>
+                                <li>支持网上支付</li>
+                                <li>与客户一对一联系</li>
+                                <li>人员无需吃住</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 我们的服务 -->
+<div id="services" class="text-center">
+
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1 section-title">
+            <h2>我们的服务</h2>
+            <hr>
+            <p>接受各种日常及专业服务订单</p>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <i class="fa fa-home"></i>
+                <h4>钟点工、日常保洁</h4>
+                <p>致力于给您最专业最洁净的舒适环境</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3"><i class="fa fa-umbrella"></i>
+                <h4>保姆、日常陪护</h4>
+                <p> 致力于给您家人般的温暖陪伴及照顾</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3"><i class="fa fa-gears"></i>
+                <h4>搬家，开荒保洁</h4>
+                <p>致力于新场所的安置及清洁、让您四海为家</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3"><i class="fa fa-language"></i>
+                <h4>外语家政</h4>
+                <p>可接受不同国家客户订单，提供无障碍语言交流，让您在异国他乡也能感受到家的温暖</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="pricing" class="text-center">
+    <div class="container">
+        <div class="section-title center">
+            <h2>价格</h2>
+            <hr>
+            <p>价目表</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="pricing-table  highlight-plan">
+                    <div class="plan-name">
+                        <h3 th:text="${products.get(0).getName()}"></h3>
+                    </div>
+                    <div class="plan-price" >
+                        <div class="price-value" th:text="${products.get(0).getPrice()}+'￥/元'"></div>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li> 钟点工</li>
+                            <li> 保姆护工</li>
+                            <li> 月嫂</li>
+                            <li> 专职奶妈</li>
+                            <li> 宴会礼宾人员</li>
+                        </ul>
+                    </div>
+                    <div class="plan-signup"> <a href="product/product1.html" th:href="@{/product1}" class="btn-system border-btn">下单</a> </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-sm-6">
+                <div class="pricing-table highlight-plan">
+                    <div class="plan-name">
+                        <h3 th:text="${products.get(1).getName()}"></h3>
+                    </div>
+                    <div class="plan-price">
+                        <div class="price-value" th:text="${products.get(1).getPrice()}+'￥/元'"></div>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li>管家</li>
+                            <li>保姆</li>
+                            <li>搬运工</li>
+                            <li>宴会服务人员</li>
+                            <li>礼宾人员</li>
+                        </ul>
+                    </div>
+                    <div class="plan-signup"> <a href="product/product2.html" th:href="@{/product2}" class="btn-system border-btn">下单</a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container text-center">
+        <p>制作by第一组</p>
+    </div>
+</div>
+</body>
+</html>

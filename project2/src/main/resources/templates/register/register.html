@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+	<script>
+		function checkPwd() {
+			var p1=document.getElementById("password1").value;
+			var p2=document.getElementById("password2").value;
+			if(p1!=p2){
+				document.getElementById("checkPhone").innerHTML="<font color='red'>两次密码不相同</font>";
+				return false;
+			}else {
+                document.getElementById("checkPhone").innerHTML = "<font color='green'>密码相同</font>";
+                return true;
+            }
+		}
+
+        function checkPhone(){
+            var phoneReg =/^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+            var phone=document.getElementById("phone").value;
+            if(!phoneReg.test(phone)){
+                document.getElementById("errorPhone").innerText="请输入正确手机号"
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        function check() {
+            return checkPwd()&&checkPhone()&&checkUserId();
+        }
+        function checkUserId(){
+            var userIdDom=document.getElementById("userId")
+            var userId=userIdDom.value;
+            var errorUserId=document.getElementById("errorUserId")
+            var xmlHttpRequest =new XMLHttpRequest();
+            xmlHttpRequest.open("GET","/checkUserId?userId="+userId,true);
+            xmlHttpRequest.onreadystatechange=function (){
+                if(xmlHttpRequest.readyState==4&&xmlHttpRequest.status==200){
+                    errorUserId.innerText=xmlHttpRequest.responseText;
+                    return false;
+                }else {
+                    return  true;
+                }
+            }
+            xmlHttpRequest.send();
+        }
+	</script>
+
+
+    <script >
+        function refresh(){
+            var code_img=document.getElementById("code_img");
+            code_img.src="/kaptcha?d="+new Date();
+        }
+    </script>
+
+</head>
+
+<body>
+
+<section class="signup">
+
+    <div class="sign-content">
+        <h2>注册</h2>
+
+        <div>
+            <form action="/checkRegister" method="post" onsubmit="return check()">
+                <div>
+                    <p id="errorUserId" style="color: red"></p>
+                </div>
+                <div>
+                    <label>帐号</label>
+                    <input type="text" class="form-control" placeholder="请输入帐号" required="required" name="userId" id="userId" onblur="checkUserId()">
+                </div><!--/.form-group -->
+
+                <div>
+                    <label>姓名</label>
+                    <input type="text" class="form-control " placeholder="请输入姓名" required="required" name="userName" th:value="${userName}">
+                </div>
+
+                <div>
+                    <label>手机号</label>
+                    <input id="phone" type="text" class="form-control" placeholder="请输入手机号" required="required" name="phone" th:value="${phone}">
+                </div>
+                <div>
+                    <p id="errorPhone" style="color: red"></p>
+                </div>
+
+                <div>
+                    <label>密码</label>
+                    <input id="password1" type="password" class="form-control" placeholder="请输入密码" required="required" onblur="checkPwd()" name="password">
+                </div>
+
+                <div>
+                    <label>确认密码</label>
+                    <input id="password2" type="password" class="form-control" placeholder="再次输入密码" required="required" onblur="checkPwd()" name="password">
+                </div>
+                <div>
+                    <p id="checkPhone" style="color: red"></p>
+                </div>
+
+                <div>
+                    <label>验证码</label>
+                    <input id="code" type="text" class="form-control" placeholder="输入验证码" required="required"  name="code">
+                    <img id="code_img" src="/kaptcha" th:src="@{/kaptcha}" onclick="refresh()">
+                </div>
+                <div>
+                    <p th:text="${errorCode}" style="color: red"></p>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <input type="checkbox" required="required">
+                            <label>接受我们的条款和条件</label>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button id="btn" type="submit"  class="btn signin_btn" data-toggle="modal" data-target=".signin_modal" >
+                        注册
+                    </button>
+                    <p>
+                        已有账户?
+                        <a href="../login/login.html" th:href="@{/login}">登录</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</section>
+
+</body>
+
+</html>
